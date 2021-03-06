@@ -14,16 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "HI",
-      initialRoute: '/Detailed',
-      routes : {
-        '/Login' : (context) => Login(),
-        '/Home' : (context) => Home(),
-        '/Post' : (context) => Post(),
-        '/Detailed' : (context) => Detailed(),
-        '/HomePage' : (context) => HomepageWidget()
-      }
-    );
+    return MaterialApp(title: "HI", initialRoute: '/HomePage', routes: {
+      '/Login': (context) => Login(),
+      '/Home': (context) => Home(),
+      '/Post': (context) => Post(),
+      '/Detailed': (context) => Detailed(),
+      '/HomePage': (context) => HomepageWidget()
+    });
   }
 }
