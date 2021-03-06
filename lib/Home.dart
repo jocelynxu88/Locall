@@ -9,13 +9,13 @@ class Home extends StatelessWidget{
           children: [
             IconButton(icon: Icon(Icons.house), onPressed: () {}),
             Spacer(),
-            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+            IconButton(icon: Icon(Icons.search), onPressed:() {}),
             IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
           ],
         ),
       ),
       floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+          FloatingActionButton(child: Icon(Icons.add), onPressed: () {print("Pressed?"); Navigator.pushNamed(context, '/Post');}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

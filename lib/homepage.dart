@@ -131,5 +131,4 @@ class JobData {
         }
         return Row(children: tags);
     }
-
 }

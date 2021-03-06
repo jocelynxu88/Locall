@@ -37,15 +37,15 @@ class Login extends StatelessWidget {
             },
             maxLength: 20,
             decoration: const InputDecoration(
-                icon: Icon(Icons.person), hintText: "password"),
+                icon: Icon(Icons.lock_rounded), hintText: "password"),
           ),
         ),
         ElevatedButton(
             onPressed: () {
               print("pressed");
-              Navigator.pushNamed(context, '/Home');
+              Navigator.pushNamed(context, '/Post');
             },
-            child: Text("Enter"))
+            child: Text("Login"))
       ],
     )));
   }
