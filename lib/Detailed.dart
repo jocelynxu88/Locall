@@ -1,13 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "BottomBar.dart";
+import "Topbar.dart";
 
 class Detailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: BottomBar(),
-        appBar: AppBar(title: Text("Some Header")),
+        appBar: AppBarScreen(),
         body: SingleChildScrollView(
             child: Align(
                 alignment: Alignment.topCenter,
@@ -20,30 +21,32 @@ class Detailed extends StatelessWidget {
                             fit: BoxFit.fill,
                             image: NetworkImage(
                                 'https://media.wired.com/photos/5dd593a829b9c40008b179b3/191:100/w_2338,h_1224,c_limit/Cul-BabyYoda_mandalorian-thechild-1_af408bfd.jpg')),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    FractionallySizedBox( //
-                        widthFactor: 0.8,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                            child: Text("Take Felix for a nice walk in the park",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(fontSize: 20))),
-                            Container(
-                              alignment: Alignment.topLeft,
+                        Positioned(
+                            top: 15,
+                            right: 15,
                             child: MaterialButton(
                                 onPressed: () {},
                                 padding: EdgeInsets.all(0.0),
-                                minWidth: 30,
                                 height: 60,
                                 shape: CircleBorder(),
                                 color: Color.fromRGBO(136, 170, 143, 1),
                                 child: Text("\$10",
                                     style: TextStyle(
-                                        fontSize: 20, color: Colors.white)))),
+                                        fontSize: 20, color: Colors.white))))
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    FractionallySizedBox(
+                        //
+                        widthFactor: 0.8,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                                child: Text(
+                                    "Take Felix for a nice walk in the park",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(fontSize: 20))),
                           ],
                         )),
                     SizedBox(height: 10),
@@ -82,44 +85,44 @@ class Detailed extends StatelessWidget {
                             style: TextStyle(height: 1.5))),
                     SizedBox(height: 30),
                     FractionallySizedBox(
-                      widthFactor: 0.9,
-                      child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Spacer(),
-                        Text("Send a text or call",
-                            style: TextStyle(fontSize: 12)),
-                        MaterialButton(
-                            color: Color.fromRGBO(229, 229, 229, 1),
-                            height: 50,
-                            onPressed: () {
-                              print("Pressed Me");
-                            },
-                            shape: CircleBorder(),
-                            child: SvgPicture.asset('assets/sendIcon.svg',
-                                semanticsLabel: "callIcon"))
-                      ],
-                    )),
+                        widthFactor: 0.9,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Spacer(),
+                            Text("Send a text or call",
+                                style: TextStyle(fontSize: 12)),
+                            MaterialButton(
+                                color: Color.fromRGBO(229, 229, 229, 1),
+                                height: 50,
+                                onPressed: () {
+                                  print("Pressed Me");
+                                },
+                                shape: CircleBorder(),
+                                child: SvgPicture.asset('assets/sendIcon.svg',
+                                    semanticsLabel: "callIcon"))
+                          ],
+                        )),
                     SizedBox(height: 30),
                     FractionallySizedBox(
-                      widthFactor: 0.9,
-                      child:
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Spacer(),
-                        Text("Send an email", style: TextStyle(fontSize: 12)),
-                        MaterialButton(
-                            color: Color.fromRGBO(229, 229, 229, 1),
-                            height: 50,
-                            onPressed: () {
-                              print("Pressed Me");
-                            },
-                            shape: CircleBorder(),
-                            child: Icon(Icons.email_outlined,
-                                color: Color.fromRGBO(136, 170, 143, 1)))
-                      ],
-                    ))
+                        widthFactor: 0.9,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Spacer(),
+                            Text("Send an email",
+                                style: TextStyle(fontSize: 12)),
+                            MaterialButton(
+                                color: Color.fromRGBO(229, 229, 229, 1),
+                                height: 50,
+                                onPressed: () {
+                                  print("Pressed Me");
+                                },
+                                shape: CircleBorder(),
+                                child: Icon(Icons.email_outlined,
+                                    color: Color.fromRGBO(136, 170, 143, 1)))
+                          ],
+                        ))
                   ],
                 ))));
   }

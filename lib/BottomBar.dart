@@ -11,7 +11,7 @@ class BottomBar extends StatelessWidget{
           children: [
             IconButton(
               icon: Icon(Icons.house, color: Color.fromRGBO(136, 170, 143, 1), size: 35), 
-              onPressed: () {}),
+              onPressed: () {Navigator.pushNamed(context, '/HomePage');}),
             Spacer(),
             MaterialButton(
               color: Color.fromRGBO(136, 170, 143, 1),

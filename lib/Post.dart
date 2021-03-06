@@ -39,7 +39,7 @@ class _PostState extends State<Post> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Ask for Help", style: TextStyle(fontSize: 40)),
+                  Text("Post Job", style: TextStyle(fontSize: 40)),
                   SizedBox(height: 30),
                   FractionallySizedBox(
                     widthFactor: 0.8,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "Search.dart";
 import 'BottomBar.dart';
+import "Topbar.dart";
 
 class HomepageWidget extends StatefulWidget {
   @override
@@ -39,7 +40,9 @@ class _HomepageState extends State<HomepageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(bottomNavigationBar: BottomBar(), body: _buildJobList());
+    return Scaffold(
+      appBar: AppBarScreen(),
+      bottomNavigationBar: BottomBar(), body: _buildJobList());
   }
 
     Widget _buildJobList(){
