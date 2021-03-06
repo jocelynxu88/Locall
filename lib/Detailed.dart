@@ -19,33 +19,31 @@ class Detailed extends StatelessWidget {
                             height: 250.00,
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                'https://i.pinimg.com/originals/0a/cb/c0/0acbc0676a2186abf1044a5f9d3d9689.jpg')),
+                                'https://media.wired.com/photos/5dd593a829b9c40008b179b3/191:100/w_2338,h_1224,c_limit/Cul-BabyYoda_mandalorian-thechild-1_af408bfd.jpg')),
                       ],
                     ),
                     SizedBox(height: 20),
-                    FractionallySizedBox(
+                    FractionallySizedBox( //
                         widthFactor: 0.8,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                                flex: 3,
-                                child: Text(
-                                    "Take Felix for a nice walk in the park",
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(fontSize: 20))),
-                            Expanded(
-                              flex: 1,
-                              child: MaterialButton(
+                            child: Text("Take Felix for a nice walk in the park",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(fontSize: 20))),
+                            Container(
+                              alignment: Alignment.topLeft,
+                            child: MaterialButton(
                                 onPressed: () {},
                                 padding: EdgeInsets.all(0.0),
                                 minWidth: 30,
                                 height: 60,
                                 shape: CircleBorder(),
                                 color: Color.fromRGBO(136, 170, 143, 1),
-                                child : Text("\$10", style : TextStyle(fontSize: 20, color: Colors.white))
-                                )
-                                ),
+                                child: Text("\$10",
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.white)))),
                           ],
                         )),
                     SizedBox(height: 10),
@@ -83,7 +81,9 @@ class Detailed extends StatelessWidget {
                             "I sprained my ankle and can’t walk poor Felix! Could someone give him a short walk around the neighbourhood? He doesn’t pull on the leash and is very gentle with people/dogs.",
                             style: TextStyle(height: 1.5))),
                     SizedBox(height: 30),
-                    Row(
+                    FractionallySizedBox(
+                      widthFactor: 0.9,
+                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Spacer(),
@@ -99,8 +99,11 @@ class Detailed extends StatelessWidget {
                             child: SvgPicture.asset('assets/sendIcon.svg',
                                 semanticsLabel: "callIcon"))
                       ],
-                    ),
+                    )),
                     SizedBox(height: 30),
+                    FractionallySizedBox(
+                      widthFactor: 0.9,
+                      child:
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -116,7 +119,7 @@ class Detailed extends StatelessWidget {
                             child: Icon(Icons.email_outlined,
                                 color: Color.fromRGBO(136, 170, 143, 1)))
                       ],
-                    )
+                    ))
                   ],
                 ))));
   }
