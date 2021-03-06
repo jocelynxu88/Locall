@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'BottomBar.dart';
 
 class HomepageWidget extends StatefulWidget{
     @override
@@ -17,6 +18,7 @@ class _HomepageState extends State<HomepageWidget>{
     @override
     Widget build(BuildContext context) {
         return Scaffold(
+            bottomNavigationBar: BottomBar(),
             body: _buildJobList()
         );
     }

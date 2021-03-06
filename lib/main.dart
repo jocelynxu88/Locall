@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'RandomWords.dart';
-import 'Home.dart';
+import 'BottomBar.dart';
 import 'Login.dart';
 import 'Post.dart';
 import 'Detailed.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/Post',
       routes : {
         '/Login' : (context) => Login(),
-        '/Home' : (context) => Home(),
+        '/BottomBar' : (context) => BottomBar(),
         '/Post' : (context) => Post(),
         '/Detailed' : (context) => Detailed(),
         '/HomePage' : (context) => HomepageWidget()
