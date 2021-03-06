@@ -1,20 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import "BottomBar.dart";
 
 class Detailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            children: [
-              IconButton(icon: Icon(Icons.house), onPressed: () {}),
-              Spacer(),
-              IconButton(icon: Icon(Icons.search), onPressed: () {}),
-              IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
-            ],
-          ),
-        ),
+        bottomNavigationBar: BottomBar(),
         appBar: AppBar(title: Text("Some Header")),
         body: SingleChildScrollView(
             child: Align(
