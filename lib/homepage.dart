@@ -9,13 +9,12 @@ class HomepageWidget extends StatefulWidget {
 }
 
 class _HomepageState extends State<HomepageWidget> {
-  final Color defaultGreen = Color(0xEF8EB699);
-
-  final List<JobData> _jobs = [
+  
+  List<JobData> _jobs = [
     new JobData(
         price: 10.00,
         poster: 'Catherine Burns',
-        description: "Walk felix pls",
+        description: "Take Felix on a Nice Hunt in the Park.",
         id: "123",
         imageUrl:
             'https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq',
@@ -23,20 +22,63 @@ class _HomepageState extends State<HomepageWidget> {
     new JobData(
         price: 11.00,
         poster: 'Owl of Perdue',
-        description: "Something here",
+        description: "I Lost My Pet Owl! Help find him!",
         id: "yay",
         imageUrl:
             'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
         tags: ["Owl", "Bite"]),
     new JobData(
         price: 12.00,
-        poster: 'Alvin Dai',
-        description: "Mow Lawn",
+        poster: 'Johnny Appleseed',
+        description: "Please Mow My Lawn",
         id: "141",
         imageUrl:
-            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+            'https://dynamicmedia.zuza.com/zz/m/original_/0/7/07f717b3-3c7c-4c9f-accb-66428cd6acb9/20170605_153258_resized___Super_Portrait.jpg',
         tags: ["Lawn"]),
+    new JobData(
+        price: 2.00,
+        poster: 'Justin Trudeau',
+        description: "Please Shovel My Driveway",
+        id: "141",
+        imageUrl:
+            "https://s3.amazonaws.com/newhobbyfarms.com/wp-content/uploads/2019/03/29203824/winter-snow-driveway.jpg",
+        tags: ["Snow", "Shovel"]),
+    new JobData(
+        price: 15.00,
+        poster: 'Billy',
+        description: "I need a Math Tutor Quick!",
+        id: "141",
+        imageUrl:
+            'https://d2r55xnwy6nx47.cloudfront.net/uploads/2020/09/Impossible-Math_2880x1220_LHPA.jpg',
+        tags: ["Tutor", "Math", "Highschool"]),
+    new JobData(
+        price: 99.00,
+        poster: 'Alvin Dai',
+        description: "Make me a Nice Shed so I can watch Disney",
+        id: "141",
+        imageUrl:
+            'https://summitsheds.com/wp-content/uploads/2020/09/Than-min.jpg',
+        tags: ["Shed", "Building", "Construction"]),
+    new JobData(
+        price: 25.00,
+        poster: 'Gran Ma',
+        description: "Fix My Printer! It's Broken!",
+        id: "141",
+        imageUrl:
+            'https://cdn.thewirecutter.com/wp-content/uploads/2020/03/allinoneprinters-lowres-5889.jpg',
+        tags: ["Printer", "Broken", "Fix", "Tech"]),
+    new JobData(
+        price: 25.00,
+        poster: 'Reid',
+        description: "I'm Bored! Someone come read with me",
+        id: "141",
+        imageUrl:
+            'https://www.unitedwayjwc.org/sites/unitedwayjwc.org/files/reading%20buddies%20with%20name.png',
+        tags: ["Buddy", "Fun", "Reading"]),
   ];
+
+  final Color defaultGreen = Color(0xEF8EB699);
+
 
   @override
   Widget build(BuildContext context) {
