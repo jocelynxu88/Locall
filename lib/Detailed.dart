@@ -20,7 +20,7 @@ class Detailed extends StatelessWidget {
                             height: 250.00,
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                'https://media.wired.com/photos/5dd593a829b9c40008b179b3/191:100/w_2338,h_1224,c_limit/Cul-BabyYoda_mandalorian-thechild-1_af408bfd.jpg')),
+                                'https://scontent.fyzd1-2.fna.fbcdn.net/v/t1.15752-9/157811451_2849217182024767_5430775160607186163_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_ohc=VDaP_LB4JRcAX_6TCIx&_nc_ht=scontent.fyzd1-2.fna&oh=3895a4baa8b280eb510acbe90377952d&oe=606A8F48')),
                         Positioned(
                             top: 15,
                             right: 15,
@@ -44,7 +44,7 @@ class Detailed extends StatelessWidget {
                           children: [
                             Expanded(
                                 child: Text(
-                                    "Take Felix for a nice walk in the park",
+                                    "Take Felix on a Nice Hunt in the Park",
                                     textAlign: TextAlign.left,
                                     style: TextStyle(fontSize: 20))),
                           ],
