@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tagging/flutter_tagging.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'dart:io';
 
 class Post extends StatefulWidget {
   @override
@@ -7,15 +10,27 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
+
+  final Color defaultGreen = Color(0xEF8EB699);
+  final Color buttonGrey = Color(0xFFF2F1F1);
+  final picker = ImagePicker();
+  File _image;
+
   List<Language> _selectedLanguages = [];
   bool _isFree = false;
+
+  _openPicker() async {
+    print("hiii");
+    final pickedFile = await picker.getImage(
+        source: ImageSource.gallery, imageQuality: 60
+    );
+
+    setState(() { _image = File(pickedFile.path); });
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        //title: Text("Ask for Help"),
-      ),
       body: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 50),
           child: Align(
@@ -125,12 +140,37 @@ class _PostState extends State<Post> {
                           onChanged: () {
                             print("");
                           })),*/
-                  SizedBox(height: 10),
+                  SizedBox(height: 50),
+                  GestureDetector(
+                        child: Container(
+                              height: 200,
+                              width: 350,
+                              decoration: new BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color(0xFFE5E5E5)),
+                              child: _image != null ?
+                              Image.file(_image, height: 200, width: 350, fit: BoxFit.fitWidth, alignment: FractionalOffset.topCenter)
+                              : Center(
+                                  child: Icon(Icons.camera_alt, color: Colors.white, size:90)
+                              )
+                          ),
+                        onTap: () {
+                            _openPicker();
+                        }
+                  ),
+                  SizedBox(height: 50),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/Home');
                       },
-                      child: Text("Post"))
+                      style: ElevatedButton.styleFrom(
+                        side: BorderSide(width: 3.0, color: defaultGreen),
+                        primary: buttonGrey,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0))
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(32, 11, 32, 11),
+                        child: Text("Post", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300, color: defaultGreen)),
+                      )
+                    )
                 ]),
           )),
     );
