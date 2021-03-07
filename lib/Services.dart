@@ -153,7 +153,13 @@ class _ServicesState extends State<Services> {
                             margin: const EdgeInsets.only(top: 20.0),
                             child: new ServiceItem(item['url'], item['title'],
                                 item['name'], item['price'], item['tags']))),*/
-                      FutureWidget()
+                      (isOfferedList ?  FutureWidget() : Column(children: _reqItems.map((item) => 
+                        FractionallySizedBox(
+                        widthFactor: 0.9,
+                        child: Container(
+                            margin: const EdgeInsets.only(top: 20.0),
+                            child: new ServiceItem(item['url'], item['title'],
+                                item['name'], item['price'], item['tags'])))).toList()))
                   
             ],
           ),
