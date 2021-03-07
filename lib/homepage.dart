@@ -17,13 +17,15 @@ class _HomepageState extends State<HomepageWidget> {
         description: "Take Felix on a Nice Hunt in the Park.",
         id: "123",
         imageUrl:
-            'https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq',
-        tags: ["Dog", "Walking"]),
+            'https://scontent.fyzd1-2.fna.fbcdn.net/v/t1.15752-9/157811451_2849217182024767_5430775160607186163_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_ohc=VDaP_LB4JRcAX_6TCIx&_nc_ht=scontent.fyzd1-2.fna&oh=3895a4baa8b280eb510acbe90377952d&oe=606A8F48',
+        distance: 1.0,
+        tags: ["Dog", "Walking", "Fluffy"]),
     new JobData(
         price: 11.00,
         poster: 'Owl of Perdue',
         description: "I Lost My Pet Owl! Help find him!",
         id: "yay",
+        distance: 1.3,
         imageUrl:
             'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
         tags: ["Owl", "Bite"]),
@@ -32,6 +34,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Johnny Appleseed',
         description: "Please Mow My Lawn",
         id: "141",
+        distance: 1.5,
         imageUrl:
             'https://dynamicmedia.zuza.com/zz/m/original_/0/7/07f717b3-3c7c-4c9f-accb-66428cd6acb9/20170605_153258_resized___Super_Portrait.jpg',
         tags: ["Lawn"]),
@@ -40,6 +43,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Justin Trudeau',
         description: "Please Shovel My Driveway",
         id: "141",
+        distance: 1.8,
         imageUrl:
             "https://s3.amazonaws.com/newhobbyfarms.com/wp-content/uploads/2019/03/29203824/winter-snow-driveway.jpg",
         tags: ["Snow", "Shovel"]),
@@ -48,6 +52,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Billy',
         description: "I need a Math Tutor Quick!",
         id: "141",
+        distance: 2.2,
         imageUrl:
             'https://d2r55xnwy6nx47.cloudfront.net/uploads/2020/09/Impossible-Math_2880x1220_LHPA.jpg',
         tags: ["Tutor", "Math", "Highschool"]),
@@ -56,6 +61,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Alvin Dai',
         description: "Make me a Nice Shed so I can watch Disney",
         id: "141",
+        distance: 3.2,
         imageUrl:
             'https://summitsheds.com/wp-content/uploads/2020/09/Than-min.jpg',
         tags: ["Shed", "Building", "Construction"]),
@@ -64,6 +70,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Gran Ma',
         description: "Fix My Printer! It's Broken!",
         id: "141",
+        distance: 3.6,
         imageUrl:
             'https://cdn.thewirecutter.com/wp-content/uploads/2020/03/allinoneprinters-lowres-5889.jpg',
         tags: ["Printer", "Broken", "Fix", "Tech"]),
@@ -72,6 +79,7 @@ class _HomepageState extends State<HomepageWidget> {
         poster: 'Reid',
         description: "I'm Bored! Someone come read with me",
         id: "141",
+        distance: 5.5,
         imageUrl:
             'https://www.unitedwayjwc.org/sites/unitedwayjwc.org/files/reading%20buddies%20with%20name.png',
         tags: ["Buddy", "Fun", "Reading"]),
@@ -152,7 +160,7 @@ class _HomepageState extends State<HomepageWidget> {
                                 Row(
                                     children: <Widget>[
                                         Icon(Icons.location_pin, color: defaultGreen, size: 20),
-                                        Text('1.0km', style: TextStyle(fontSize: 13.0))
+                                        Text(job.distance.toString()+'km', style: TextStyle(fontSize: 13.0))
                                     ]
                                 )
                             ]
@@ -171,6 +179,7 @@ class JobData {
   String imageUrl;
   String poster;
   List<String> tags;
+  double distance;
 
   JobData(
       {this.price,
@@ -178,7 +187,8 @@ class JobData {
       this.id,
       this.imageUrl,
       this.poster,
-      this.tags});
+      this.tags,
+      this.distance});
 
   Widget buildTags() {
     List<Widget> tags = new List<Widget>();
