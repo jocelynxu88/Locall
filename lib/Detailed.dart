@@ -8,8 +8,8 @@ class Detailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //bottomNavigationBar: BottomBar(),
         appBar: AppBarScreen(),
+        bottomNavigationBar: BottomBar(),
         body: SingleChildScrollView(
             child: Align(
                 alignment: Alignment.topCenter,

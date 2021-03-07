@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'Topbar.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:my_app/Topbar.dart';
 
@@ -21,6 +22,7 @@ class _PostState extends State<Post> {
   final priceController = TextEditingController();
   final descriptionController = TextEditingController();
   final tagController = TextEditingController();
+  final CollectionReference _storeDocs = Firestore.instance.collection('users');
 
   List<Language> _selectedLanguages = [];
   bool _isFree = false;
@@ -72,7 +74,10 @@ class _PostState extends State<Post> {
                             value: _isFree,
                             onChanged: (int) {
                               setState(() {_isFree = !_isFree;});
-                              if(_isFree)priceController.clear();
+                              if(_isFree){
+                                priceController.clear();
+                                priceController.text = '0';
+                              }
                               return 0;
                             }),
                         Text("Free")
@@ -168,12 +173,26 @@ class _PostState extends State<Post> {
                   ),
                   SizedBox(height: 50),
                   ElevatedButton(
-                      onPressed: () {
-                        print(titleController.text);
-                        print(descriptionController.text);
-                        print(tagController.text);
-                        print(priceController.text);
-                        Navigator.pushNamed(context, '/HomePage');
+                      onPressed: () async {
+                        var a = titleController.text;
+                        var b = descriptionController.text;
+                        var c = tagController.text;
+                        var d = priceController.text;
+                        if(titleController.text.isEmpty) a = "No Title";
+                        if(descriptionController.text.isEmpty) b = "No Description";
+                        if(tagController.text.isEmpty) c = "No Tags";
+                        if(priceController.text.isEmpty) d = "No Price";
+                        print(a);
+                        print(b);
+                        print(c);
+                        print(d);
+                        try{
+                          await _storeDocs.add({'title': a, 'description' : b, 'tag' : c, 'price' : d});
+                          Navigator.pushNamed(context, '/HomePage');
+                        }catch(e){
+                          print(e.toString());
+                          //Navigator.pushNamed(context, '/HomePage');
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         side: BorderSide(width: 3.0, color: defaultGreen),
