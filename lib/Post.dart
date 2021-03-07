@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tagging/flutter_tagging.dart';
 import 'package:image_picker/image_picker.dart';
+import 'Topbar.dart';
 import 'dart:async';
 import 'dart:io';
+
+import 'package:my_app/Topbar.dart';
 
 class Post extends StatefulWidget {
   @override
@@ -15,6 +18,8 @@ class _PostState extends State<Post> {
   final Color buttonGrey = Color(0xFFF2F1F1);
   final picker = ImagePicker();
   File _image;
+
+  final priceController = TextEditingController();
 
   List<Language> _selectedLanguages = [];
   bool _isFree = false;
@@ -31,6 +36,7 @@ class _PostState extends State<Post> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBarScreen(),
       body: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 50),
           child: Align(
@@ -56,6 +62,8 @@ class _PostState extends State<Post> {
                         Text("\$ "),
                         Flexible(
                             child: TextFormField(
+                              enabled: !_isFree,
+                              controller: priceController,
                           decoration:
                               const InputDecoration(hintText: "Offer Price"),
                         )),
@@ -64,6 +72,7 @@ class _PostState extends State<Post> {
                             onChanged: (int) {
                               print("check");
                               setState(() {_isFree = !_isFree;});
+                              if(_isFree)priceController.clear();
                               print(_isFree);
                               return 0;
                             }),
@@ -159,7 +168,7 @@ class _PostState extends State<Post> {
                   SizedBox(height: 50),
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Home');
+                        Navigator.pushNamed(context, '/HomePage');
                       },
                       style: ElevatedButton.styleFrom(
                         side: BorderSide(width: 3.0, color: defaultGreen),

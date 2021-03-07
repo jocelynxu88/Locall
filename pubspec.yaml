@@ -28,6 +28,7 @@ dependencies:
   flutter_svg: ^0.19.3
   flutter_tagging: ^2.2.0+3
   image_picker: ^0.6.6+5
+  url_launcher: ^6.0.2
 
 dev_dependencies:
   flutter_test:

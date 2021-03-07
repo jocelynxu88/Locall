@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
+import 'package:url_launcher/url_launcher.dart';
 import "BottomBar.dart";
 import "Topbar.dart";
 
@@ -95,8 +96,16 @@ class Detailed extends StatelessWidget {
                             MaterialButton(
                                 color: Color.fromRGBO(229, 229, 229, 1),
                                 height: 50,
-                                onPressed: () {
+                                onPressed: () async {
                                   print("Pressed Me");
+                                  const url = 'sms:5550101234';
+                                  
+                                  bool goLaunch = await canLaunch(url);
+                                  if(goLaunch) 
+                                  await launch(url);
+                                  else {
+                                    throw 'Could not launch $url';
+                                  }
                                 },
                                 shape: CircleBorder(),
                                 child: SvgPicture.asset('assets/sendIcon.svg',

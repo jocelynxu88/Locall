@@ -5,6 +5,7 @@ import 'Login.dart';
 import 'Post.dart';
 import 'Detailed.dart';
 import 'homepage.dart';
+import "Services.dart";
 
 void main() {
   runApp(MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       '/BottomBar': (context) => BottomBar(),
       '/Post': (context) => Post(),
       '/Detailed': (context) => Detailed(),
-      '/HomePage': (context) => HomepageWidget()
+      '/HomePage': (context) => HomepageWidget(),
+      '/Services' : (context) => Services()
     });
   }
 }

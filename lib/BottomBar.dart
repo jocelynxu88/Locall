@@ -11,7 +11,8 @@ class BottomBar extends StatelessWidget{
           children: [
             IconButton(
               icon: Icon(Icons.house, color: Color.fromRGBO(136, 170, 143, 1), size: 35), 
-              onPressed: () {Navigator.pushNamed(context, '/HomePage');}),
+              onPressed: () {
+                if('/HomePage' != ModalRoute.of(context).settings.name) Navigator.pushNamed(context, '/HomePage');}),
             Spacer(),
             MaterialButton(
               color: Color.fromRGBO(136, 170, 143, 1),
@@ -23,7 +24,7 @@ class BottomBar extends StatelessWidget{
             Spacer(),
             IconButton(
               icon: SvgPicture.asset('assets/handshake.svg'), 
-              onPressed: () {}),
+              onPressed: () {if('/Services' != ModalRoute.of(context).settings.name) Navigator.pushNamed(context, '/Services');}),
           ],
         )),
       );

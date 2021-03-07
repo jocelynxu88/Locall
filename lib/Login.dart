@@ -12,6 +12,11 @@ class Login extends StatelessWidget {
         body: Center(
             child: Container(
                 width: double.infinity,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color.fromRGBO(181, 0, 0, 1), Color.fromRGBO(251, 255, 5, 0.5)])),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
