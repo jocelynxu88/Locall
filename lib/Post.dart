@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io' as Io;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tagging/flutter_tagging.dart';
 import 'package:image_picker/image_picker.dart';
@@ -178,16 +181,25 @@ class _PostState extends State<Post> {
                         var b = descriptionController.text;
                         var c = tagController.text;
                         var d = priceController.text;
+                        var e;
+                        String f;
                         if(titleController.text.isEmpty) a = "No Title";
                         if(descriptionController.text.isEmpty) b = "No Description";
                         if(tagController.text.isEmpty) c = "No Tags";
                         if(priceController.text.isEmpty) d = "No Price";
+                        if(_image == null) f = "None";
+                        else{
+                          //f = base64Encode(_image.readAsBytesSync());
+                          f = _image.path;
+                        }
                         print(a);
                         print(b);
                         print(c);
                         print(d);
+                        print(f);
+                        
                         try{
-                          await _storeDocs.add({'title': a, 'description' : b, 'tag' : c, 'price' : d});
+                          await _storeDocs.add({'title': a, 'description' : b, 'tag' : c, 'price' : d, 'image' : f});
                           Navigator.pushNamed(context, '/HomePage');
                         }catch(e){
                           print(e.toString());

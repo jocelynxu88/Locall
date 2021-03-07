@@ -118,6 +118,12 @@ class Detailed extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
+                            MaterialButton(
+                              color: Color.fromRGBO(0, 209, 3, 1),
+                              shape: CircleBorder(),
+                              height: 70,
+                              onPressed: (){},
+                            child: Text("Accept", style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
                             Spacer(),
                             Text("Send an email",
                                 style: TextStyle(fontSize: 12)),

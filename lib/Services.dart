@@ -1,74 +1,165 @@
 import 'package:flutter/material.dart';
 import 'BottomBar.dart';
 import 'Topbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Services extends StatefulWidget{
+class Services extends StatefulWidget {
   @override
   _ServicesState createState() => _ServicesState();
 }
 
-class _ServicesState extends State<Services>{
-  List<ServiceItem> _items = [
-    new ServiceItem('https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq', 'Lawn Mowing', 'name', 11, ['Grass', 'Weed']),
-    new ServiceItem('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', 'title2', 'name2', 12, ['tag2', 'tagg2']),
-    new ServiceItem('https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq', 'Bark', 'Clifford', 12, ['Rawr', 'Woof'])
+class _ServicesState extends State<Services> {
+  List<Map<String, Object>> _items = [
+    {
+      'url':
+          'https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq',
+      'title': 'Lawn Mowing',
+      'name': 'name',
+      'price': 11.0,
+      'tags': ['Grass', 'Weed']
+    },
+    {
+      'url':
+          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+      'title': 'title2',
+      'name': 'name2',
+      'price': 12.0,
+      'tags': ['tag2', 'tagg2']
+    },
+    {
+      'url':
+          'https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/dogs_1280p_0.jpg?itok=cnRk0HYq',
+      'title': 'Bark',
+      'name': 'Clifford',
+      'price': 12.0,
+      'tags': ['Rawr', 'Woof']
+    }
   ];
 
-    List<ServiceItem> _reqItems = [
-    new ServiceItem('https://static.rogerebert.com/uploads/review/primary_image/reviews/ice-age-the-meltdown-2006/EB20060330REVIEWS60323007AR.jpg', 'title1', 'name', 1, ['tag1', 'tagg1']),
-    new ServiceItem('https://i.kym-cdn.com/entries/icons/facebook/000/028/727/Screen_Shot_2019-02-26_at_3.38.50_PM.jpg', 'Get Acorn', 'Johnny', 99, ['Food', 'Exercise']),
-    new ServiceItem('https://s.yimg.com/ny/api/res/1.2/WYmIUWk5U3ELBqRdkKdPFQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTUzOS43OTIzODc1NDMyNTI2/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2020-03/56bb7aa0-6a95-11ea-9cd7-6b04cf075a28', 'title3', 'name3', 3, ['tag3', 'tagg3'])
+  List<Map<String, Object>> _reqItems = [
+    {
+      'url':
+          'https://static.rogerebert.com/uploads/review/primary_image/reviews/ice-age-the-meltdown-2006/EB20060330REVIEWS60323007AR.jpg',
+      'title': 'title1',
+      'name': 'name',
+      'price': 1.0,
+      'tags': ['tag1', 'tagg1']
+    },
+    {
+      'url':
+          'https://i.kym-cdn.com/entries/icons/facebook/000/028/727/Screen_Shot_2019-02-26_at_3.38.50_PM.jpg',
+      'title': 'Get Acorn',
+      'name': 'Johnny',
+      'price': 99.0,
+      'tags': ['Food', 'Exercise']
+    },
+    {
+      'url':
+          'https://s.yimg.com/ny/api/res/1.2/WYmIUWk5U3ELBqRdkKdPFQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTUzOS43OTIzODc1NDMyNTI2/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2020-03/56bb7aa0-6a95-11ea-9cd7-6b04cf075a28',
+      'title': 'title3',
+      'name': 'name3',
+      'price': 3.0,
+      'tags': ['tag3', 'tagg3']
+    }
   ];
+
+  final CollectionReference _storeDocs = Firestore.instance.collection('users');
+
+  var prevServices;
+
+  _ServicesState() {
+    print("SERVICE STATE CONSTRUCTOR");
+    try {
+      prevServices = _storeDocs.getDocuments();
+    } catch (e) {
+      print(e.toString());
+    }
+    /*for(int i=0; i<_items.length; i++){
+    _storeDocs.add({
+      'url' : _items[i]['url'],
+      'title' : _items[i]['title'],
+      'name' : _items[i]['name'],
+      'description' : _items[i]['description'],
+      'tags' : _items[i]['tags'],
+      'price' : _items[i]['price']
+    });*/
+    /*for(int i=0; i<_reqItems.length; i++){
+    _storeDocs.add({
+      'url' : _items[i]['url'],
+      'title' : _items[i]['title'],
+      'name' : _items[i]['name'],
+      'description' : _items[i]['description'],
+      'tags' : _items[i]['tags'],
+      'price' : _items[i]['price']
+    });
+    /*print(_items[i]); 
+    print(_items[i]['url']);
+    print("\n");*/
+    }*/
+  }
 
   bool isOfferedList = true;
 
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarScreen(),
-      bottomNavigationBar: BottomBar(),
-      body:
-        SingleChildScrollView (
-          child: Center(
+        appBar: AppBarScreen(),
+        bottomNavigationBar: BottomBar(),
+        body: SingleChildScrollView(
+            child: Center(
           child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 50),
-          
-          FractionallySizedBox(
-            widthFactor: 0.9,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Services", style : TextStyle(fontSize: 50)),
-              ]),
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 50),
+              FractionallySizedBox(
+                widthFactor: 0.9,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Services", style: TextStyle(fontSize: 50)),
+                    ]),
+              ),
+              SizedBox(height: 50),
+              FractionallySizedBox(
+                widthFactor: 0.9,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(isOfferedList ? "Offered" : "Requested",
+                          style: TextStyle(fontSize: 30)),
+                      Switch(
+                          value: isOfferedList,
+                          onChanged: (value) {
+                            setState(() {
+                              isOfferedList = !isOfferedList;
+                            });
+                          })
+                    ]),
+              ),
+              FractionallySizedBox(
+                  widthFactor: 0.9,
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: ServiceItem(
+                          "https://www.unitedwayjwc.org/sites/unitedwayjwc.org/files/reading%20buddies%20with%20name.png",
+                          "title",
+                          "name",
+                          10,
+                          ["tag1", "tag2"]))),
+              
+                  for (var item in (isOfferedList ? _items : _reqItems))
+                    FractionallySizedBox(
+                        widthFactor: 0.9,
+                        child: Container(
+                            margin: const EdgeInsets.only(top: 20.0),
+                            child: new ServiceItem(item['url'], item['title'],
+                                item['name'], item['price'], item['tags'])))
+            ],
           ),
-          SizedBox(height: 50),
-
-          FractionallySizedBox(
-            widthFactor: 0.9,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(isOfferedList ? "Offered" : "Requested", style : TextStyle(fontSize: 30)), 
-              Switch(
-                value: isOfferedList,
-                onChanged : (value) {setState((){isOfferedList = !isOfferedList;});}
-              )]),
-          ),
-
-          FractionallySizedBox(
-            widthFactor: 0.9,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child : ServiceItem("https://www.unitedwayjwc.org/sites/unitedwayjwc.org/files/reading%20buddies%20with%20name.png", "title", "name", 10, ["tag1", "tag2"])
-            )
-          ),
-          for(var item in (isOfferedList ? _items : _reqItems)) FractionallySizedBox(
-            widthFactor: 0.9, child: Container(margin: const EdgeInsets.only(top: 20.0), child: item))
-        ],),
-      )));
+        )));
   }
 }
 
-class ServiceItem extends StatelessWidget{
+class ServiceItem extends StatelessWidget {
   final String imgUrl;
   final String title;
   final String name;
@@ -77,45 +168,53 @@ class ServiceItem extends StatelessWidget{
 
   ServiceItem(this.imgUrl, this.title, this.name, this.price, this.tags);
 
-  Widget build(BuildContext context){
-    return(Row(
-          children: [
-            GestureDetector(
-              onTap: () {Navigator.pushNamed(context, '/Detailed');},
-            child: Image(height: 100, width: 100, image: NetworkImage(this.imgUrl))),
-            SizedBox(width: 10),
-            Expanded(
+  Widget build(BuildContext context) {
+    return (Row(
+      children: [
+        GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/Detailed');
+            },
+            child: Image(
+                height: 100, width: 100, image: NetworkImage(this.imgUrl))),
+        SizedBox(width: 10),
+        Expanded(
             child: Column(
+          children: [
+            Align(
+                alignment: Alignment.topLeft,
+                child: Text(this.title, style: TextStyle(fontSize: 20))),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-              Align(alignment: Alignment.topLeft, child: Text(this.title, style: TextStyle(fontSize: 20))),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                    Align(alignment: Alignment.topLeft, child: 
-                    Row(children: [
-                      Icon(Icons.person, color: Color.fromRGBO(136, 170, 143, 1)),
-                      Text(this.name)])),
-                      SizedBox(height: 5),
-                      TagThings(tags: this.tags)
-                  ],),
-                   MaterialButton(
-                                onPressed: () {},
-                                padding: EdgeInsets.all(0.0),
-                                height: 60,
-                                shape: CircleBorder(),
-                                color: Color.fromRGBO(136, 170, 143, 0.5),
-                                child: Text("\$"+this.price.toStringAsFixed(2),
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white)))
-                ],
-                )
-            ],))
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(children: [
+                          Icon(Icons.person,
+                              color: Color.fromRGBO(136, 170, 143, 1)),
+                          Text(this.name)
+                        ])),
+                    SizedBox(height: 5),
+                    TagThings(tags: this.tags)
+                  ],
+                ),
+                MaterialButton(
+                    onPressed: () {},
+                    padding: EdgeInsets.all(0.0),
+                    height: 60,
+                    shape: CircleBorder(),
+                    color: Color.fromRGBO(136, 170, 143, 0.5),
+                    child: Text("\$" + this.price.toStringAsFixed(2),
+                        style: TextStyle(fontSize: 15, color: Colors.white)))
+              ],
+            )
           ],
-        )
-    );
+        ))
+      ],
+    ));
   }
 }
 
