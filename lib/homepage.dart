@@ -9,7 +9,6 @@ class HomepageWidget extends StatefulWidget {
 }
 
 class _HomepageState extends State<HomepageWidget> {
-  
   List<JobData> _jobs = [
     new JobData(
         price: 10.00,

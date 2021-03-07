@@ -16,7 +16,7 @@ class Login extends StatelessWidget {
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Color.fromRGBO(181, 0, 0, 1), Color.fromRGBO(251, 255, 5, 0.5)])),
+                        colors: [Color.fromRGBO(38, 255, 0, 1), Color.fromRGBO(0, 255, 247, 0.5)])),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

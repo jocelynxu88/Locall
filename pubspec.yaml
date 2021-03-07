@@ -29,6 +29,7 @@ dependencies:
   flutter_tagging: ^2.2.0+3
   image_picker: ^0.6.6+5
   url_launcher: ^6.0.2
+  cloud_firestore: ^0.13.0+1
 
 dev_dependencies:
   flutter_test:
