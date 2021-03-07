@@ -16,7 +16,7 @@ class _ServicesState extends State<Services>{
 
     List<ServiceItem> _reqItems = [
     new ServiceItem('https://static.rogerebert.com/uploads/review/primary_image/reviews/ice-age-the-meltdown-2006/EB20060330REVIEWS60323007AR.jpg', 'title1', 'name', 1, ['tag1', 'tagg1']),
-    new ServiceItem('https://i.kym-cdn.com/entries/icons/facebook/000/028/727/Screen_Shot_2019-02-26_at_3.38.50_PM.jpg', 'Get Acorn', 'Johnny', 120, ['Food', 'Exercise']),
+    new ServiceItem('https://i.kym-cdn.com/entries/icons/facebook/000/028/727/Screen_Shot_2019-02-26_at_3.38.50_PM.jpg', 'Get Acorn', 'Johnny', 99, ['Food', 'Exercise']),
     new ServiceItem('https://s.yimg.com/ny/api/res/1.2/WYmIUWk5U3ELBqRdkKdPFQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTUzOS43OTIzODc1NDMyNTI2/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2020-03/56bb7aa0-6a95-11ea-9cd7-6b04cf075a28', 'title3', 'name3', 3, ['tag3', 'tagg3'])
   ];
 
@@ -80,7 +80,9 @@ class ServiceItem extends StatelessWidget{
   Widget build(BuildContext context){
     return(Row(
           children: [
-            Image(height: 100, width: 100, image: NetworkImage(this.imgUrl)),
+            GestureDetector(
+              onTap: () {Navigator.pushNamed(context, '/Detailed');},
+            child: Image(height: 100, width: 100, image: NetworkImage(this.imgUrl))),
             SizedBox(width: 10),
             Expanded(
             child: Column(

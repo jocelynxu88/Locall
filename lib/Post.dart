@@ -13,19 +13,19 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
-
   final Color defaultGreen = Color(0xEF8EB699);
   final Color buttonGrey = Color(0xFFF2F1F1);
   final picker = ImagePicker();
   File _image;
-
+  final titleController = TextEditingController();
   final priceController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final tagController = TextEditingController();
 
   List<Language> _selectedLanguages = [];
   bool _isFree = false;
 
   _openPicker() async {
-    print("hiii");
     final pickedFile = await picker.getImage(
         source: ImageSource.gallery, imageQuality: 60
     );
@@ -50,6 +50,7 @@ class _PostState extends State<Post> {
                   FractionallySizedBox(
                     widthFactor: 0.8,
                     child: TextField(
+                      controller: titleController,
                       decoration:
                           const InputDecoration(hintText: "Title of Service"),
                     ),
@@ -70,10 +71,8 @@ class _PostState extends State<Post> {
                         Checkbox(
                             value: _isFree,
                             onChanged: (int) {
-                              print("check");
                               setState(() {_isFree = !_isFree;});
                               if(_isFree)priceController.clear();
-                              print(_isFree);
                               return 0;
                             }),
                         Text("Free")
@@ -84,6 +83,7 @@ class _PostState extends State<Post> {
                   FractionallySizedBox(
                     widthFactor: 0.8,
                     child: TextField(
+                      controller: descriptionController,
                       decoration:
                           const InputDecoration(hintText: "Description"),
                     ),
@@ -92,6 +92,7 @@ class _PostState extends State<Post> {
                   FractionallySizedBox(
                     widthFactor: 0.8,
                     child: TextField(
+                      controller: tagController,
                       decoration: const InputDecoration(hintText: "Tags"),
                     ),
                   ),
@@ -168,6 +169,10 @@ class _PostState extends State<Post> {
                   SizedBox(height: 50),
                   ElevatedButton(
                       onPressed: () {
+                        print(titleController.text);
+                        print(descriptionController.text);
+                        print(tagController.text);
+                        print(priceController.text);
                         Navigator.pushNamed(context, '/HomePage');
                       },
                       style: ElevatedButton.styleFrom(
