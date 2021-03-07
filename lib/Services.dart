@@ -193,19 +193,10 @@ class FutureWidget extends StatelessWidget{
         if(!snapshot.hasData) return new Text("No items");
         return new Column(children : 
         snapshot.data.documents.map((doc)=> FractionallySizedBox(
-      widthFactor: 0.8, child: ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tags']))).toList()
+      widthFactor: 0.9, child: ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tags']))).toList()
         //snapshot.data.documents.map((doc) => Text(doc['title'])).toList()
         );
       });
-  }
-
-    getItems(AsyncSnapshot<QuerySnapshot> snapshot){
-    return Column(children: snapshot.data.documents.map((doc)=>
-    FractionallySizedBox(
-      widthFactor: 0.9,
-      child: 
-     ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tags']))).toList()
-     );
   }
 }
 
