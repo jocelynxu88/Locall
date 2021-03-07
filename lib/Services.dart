@@ -65,7 +65,7 @@ class _ServicesState extends State<Services> {
 
   final CollectionReference _storeDocs = Firestore.instance.collection('users');
 
-  var prevServices;
+  Future prevServices;
 
   _ServicesState() {
     print("SERVICE STATE CONSTRUCTOR");
@@ -135,7 +135,7 @@ class _ServicesState extends State<Services> {
                           })
                     ]),
               ),
-              FractionallySizedBox(
+              /*FractionallySizedBox(
                   widthFactor: 0.9,
                   child: Align(
                       alignment: Alignment.centerLeft,
@@ -144,18 +144,68 @@ class _ServicesState extends State<Services> {
                           "title",
                           "name",
                           10,
-                          ["tag1", "tag2"]))),
-              
-                  for (var item in (isOfferedList ? _items : _reqItems))
+                          ["tag1", "tag2"]))),*/
+
+                  /*for (var item in (isOfferedList ? _items : _reqItems))
                     FractionallySizedBox(
                         widthFactor: 0.9,
                         child: Container(
                             margin: const EdgeInsets.only(top: 20.0),
                             child: new ServiceItem(item['url'], item['title'],
-                                item['name'], item['price'], item['tags'])))
+                                item['name'], item['price'], item['tags']))),*/
+                      FutureWidget()
+                  
             ],
           ),
         )));
+  }
+}
+
+/*class FutureWidget extends StatelessWidget{
+  final CollectionReference _storeDocs = Firestore.instance.collection('users');
+
+  Future<QuerySnapshot> getDocs () {return _storeDocs.getDocuments();} 
+
+  @override 
+  Widget build(BuildContext context){
+    return new StreamBuilder<QuerySnapshot>(
+      stream: _storeDocs.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot <QuerySnapshot> snapshot){
+        if(!snapshot.hasData) return LinearProgressIndicator();
+        else return getItems(snapshot);
+      }
+    );
+  }
+
+  getItems(AsyncSnapshot<QuerySnapshot> snapshot){
+    return Column(children: snapshot.data.documents.map((doc)=> ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tag'])).toList());
+  }
+}*/
+
+class FutureWidget extends StatelessWidget{
+  final CollectionReference _storeDocs = Firestore.instance.collection('users');
+
+  @override 
+  Widget build(BuildContext context){
+    return StreamBuilder<QuerySnapshot>(
+      stream: _storeDocs.snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+        if(!snapshot.hasData) return new Text("No items");
+        return new Column(children : 
+        snapshot.data.documents.map((doc)=> FractionallySizedBox(
+      widthFactor: 0.8, child: ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tags']))).toList()
+        //snapshot.data.documents.map((doc) => Text(doc['title'])).toList()
+        );
+      });
+  }
+
+    getItems(AsyncSnapshot<QuerySnapshot> snapshot){
+    return Column(children: snapshot.data.documents.map((doc)=>
+    FractionallySizedBox(
+      widthFactor: 0.9,
+      child: 
+     ServiceItem(doc['url'], doc['title'], doc['name'], doc['price'].toDouble(), doc['tags']))).toList()
+     );
   }
 }
 
@@ -164,9 +214,20 @@ class ServiceItem extends StatelessWidget {
   final String title;
   final String name;
   final double price;
-  final List<String> tags;
+  final List tags;
 
-  ServiceItem(this.imgUrl, this.title, this.name, this.price, this.tags);
+  ServiceItem(this.imgUrl, this.title, this.name, this.price, this.tags){
+    print("^^^^^");
+    print(this.imgUrl);
+    print(this.title);
+    print(this.name);
+    print(this.price);
+    print(this.tags);
+    print(this.tags.toList());
+    print(this.tags.toString());
+    print(this.tags is List<String>);
+    print("@######\n");
+  }
 
   Widget build(BuildContext context) {
     return (Row(
@@ -176,10 +237,11 @@ class ServiceItem extends StatelessWidget {
               Navigator.pushNamed(context, '/Detailed');
             },
             child: Image(
-                height: 100, width: 100, image: NetworkImage(this.imgUrl))),
+                height: 100, width: 100, 
+                image: NetworkImage(this.imgUrl))),
         SizedBox(width: 10),
         Expanded(
-            child: Column(
+          child: Column(
           children: [
             Align(
                 alignment: Alignment.topLeft,
@@ -219,7 +281,7 @@ class ServiceItem extends StatelessWidget {
 }
 
 class TagThings extends StatelessWidget {
-  final List<String> tags;
+  final List tags;
   TagThings({this.tags});
 
   Widget build(BuildContext context) {
