@@ -40,15 +40,6 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
   List<JobData> _jobs = [
     new JobData(
-        price: 10.00,
-        poster: 'Catherine Burns',
-        description: "Take Felix on a Nice Hunt in the Park.",
-        id: "123",
-        distance: 1.0,
-        imageUrl:
-            'https://scontent.fyzd1-2.fna.fbcdn.net/v/t1.15752-9/157811451_2849217182024767_5430775160607186163_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_ohc=VDaP_LB4JRcAX_6TCIx&_nc_ht=scontent.fyzd1-2.fna&oh=3895a4baa8b280eb510acbe90377952d&oe=606A8F48',
-        tags: ["Dog", "Walking", "Fluffy"]),
-    new JobData(
         price: 11.00,
         poster: 'Owl of Perdue',
         description: "I Lost My Pet Owl! Help find him!",
@@ -111,6 +102,15 @@ class DataSearch extends SearchDelegate<String> {
         imageUrl:
             'https://www.unitedwayjwc.org/sites/unitedwayjwc.org/files/reading%20buddies%20with%20name.png',
         tags: ["Buddy", "Fun", "Reading"]),
+    new JobData(
+        price: 10.00,
+        poster: 'Catherine Burns',
+        description: "Take Felix on a Nice Hunt in the Park.",
+        id: "123",
+        distance: 1.0,
+        imageUrl:
+            'https://scontent.fyzd1-2.fna.fbcdn.net/v/t1.15752-9/157811451_2849217182024767_5430775160607186163_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_ohc=VDaP_LB4JRcAX_6TCIx&_nc_ht=scontent.fyzd1-2.fna&oh=3895a4baa8b280eb510acbe90377952d&oe=606A8F48',
+        tags: ["Dog", "Walking", "Fluffy"]),
   ];
 
     List<JobData> filteredJobs = [];

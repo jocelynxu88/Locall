@@ -5,6 +5,8 @@ import "BottomBar.dart";
 import "Topbar.dart";
 
 class Detailed extends StatelessWidget {
+  final Color defaultGreen = Color(0xEF8EB699);
+  final Color buttonGrey = Color(0xFFF2F1F1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,12 +120,20 @@ class Detailed extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            MaterialButton(
-                              color: Color.fromRGBO(0, 209, 3, 1),
-                              shape: CircleBorder(),
-                              height: 70,
-                              onPressed: (){},
-                            child: Text("Accept", style : TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/HomePage');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                side: BorderSide(width: 3.0, color: defaultGreen),
+                                primary: buttonGrey,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0))
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(32, 11, 32, 11),
+                                child: Text("Accept", style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300, color: defaultGreen)),
+                              )
+                            ),
                             Spacer(),
                             Text("Send an email",
                                 style: TextStyle(fontSize: 12)),
